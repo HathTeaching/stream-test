@@ -11,26 +11,26 @@ let [state, updateStream] = objectUpdateStream({
 let selectStream = selectionStream();
 
 let disposables = [
-    run({
-        event(time: Time, value: ObjUpdate) {
-            console.log(time, "objectUpdate", value);
-        },
-        error(time: Time, err: Error) {
-            console.error(err);
-        },
-        end(time: Time) {}
+    // run({
+    //     event(time: Time, value: ObjUpdate) {
+    //         console.log(time, "objectUpdate", value);
+    //     },
+    //     error(time: Time, err: Error) {
+    //         console.error(err);
+    //     },
+    //     end(time: Time) {}
 
-    } , scheduler, updateStream),
-    run({
-        event(time: Time, value: ) {
-            console.log(time, "selection", value);
-        },
-        error(time: Time, err: Error) {
-            console.error(err);
-        },
-        end(time: Time) {}
+    // } , scheduler, updateStream),
+    // run({
+    //     event(time: Time, value) {
+    //         console.log(time, "selection", value);
+    //     },
+    //     error(time: Time, err: Error) {
+    //         console.error(err);
+    //     },
+    //     end(time: Time) {}
 
-    } , scheduler, selectStream)
+    // } , scheduler, selectStream)
 ];
 
 class App extends Component {
@@ -42,6 +42,8 @@ class App extends Component {
     return (
       <div class="App">
         <h1>Hello Streams</h1>
+        <input type="text" id="textOne"></input>
+        <input type="text" id="textTwo"></input>
         <p id="A">
           Far far away, behind the word mountains, far from the countries
           Vokalia and Consonantia, there live the blind texts.

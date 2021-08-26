@@ -26,7 +26,7 @@ window.getSelection()
 https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection
 https://developer.mozilla.org/en-US/docs/Web/API/Selection
 */
-
-export function selectionStream(): Stream<ISelectionRange | IDeselectionEvent> {
+export type selectionEvents = ISelectionEvent | IDeselectionEvent;
+export function selectionStream(): Stream<ISelectionEvent | IDeselectionEvent> {
 
 }
