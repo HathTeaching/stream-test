@@ -1,0 +1,36 @@
+{
+    "scripts": {
+        "clean": "shx rm -rf dist",
+        "start": "nollup -c --environment NODE_ENV:development",
+        "build": "npm run clean && rollup -c --environment NODE_ENV:production",
+        "test": "npx mocha --require ts-node/register \"./tests/*.ts\""
+    },
+    "dependencies": {
+        "@types/mocha": "^9.0.0",
+        "@types/underscore": "^1.11.3",
+        "fast-check": "^2.17.0",
+        "mocha": "^9.1.0",
+        "preact": "^10.5.13",
+        "preact-jsx-runtime": "^1.2.0",
+        "ts-node": "^10.2.1",
+        "tslib": "^2.3.1",
+        "typescript": "^4.3.5",
+        "underscore": "^1.13.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.14.0",
+        "@babel/plugin-transform-react-jsx": "^7.13.12",
+        "@babel/plugin-transform-typescript": "^7.15.0",
+        "@babel/preset-typescript": "^7.15.0",
+        "@prefresh/nollup": "^3.0.1",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-node-resolve": "^13.0.0",
+        "nollup": "^0.16.4",
+        "react-refresh": "^0.10.0",
+        "rollup": "^2.47.0",
+        "rollup-plugin-hot-css": "^0.5.0",
+        "rollup-plugin-static-files": "^0.2.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "shx": "^0.3.3"
+    }
+}

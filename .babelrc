@@ -1,0 +1,24 @@
+{
+    "plugins": [
+        ["@babel/plugin-transform-typescript",
+            {
+                "isTSX": true, 
+                "allExtensions": true,
+                "jsx": "preserve",
+                "jsxPragma": "h"
+            }
+        ],
+        [
+            "@babel/plugin-transform-react-jsx",
+            {
+                "runtime": "automatic",
+                "importSource": "preact"
+            }
+        ]
+    ],
+    "env": {
+        "development": {
+            "plugins": ["react-refresh/babel"]
+        }
+    }
+}
