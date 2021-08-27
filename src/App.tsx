@@ -38,12 +38,19 @@ class App extends Component {
         super();
         this.state = state;
     }
+
+    onInputOne(event) {
+        this.setState({inputOne: event.target.value})
+    }
+    onInputTwo(event) {
+        this.setState({inputTwo: event.target.value})
+    }
     render() {
     return (
       <div class="App">
         <h1>Hello Streams</h1>
-        <input type="text" id="textOne"></input>
-        <input type="text" id="textTwo"></input>
+        <input type="text" id="textOne" onInput={(e) => this.onInputOne(e)}></input>
+        <input type="text" id="textTwo" onInput={(e) => this.onInputTwo(e)}></input>
         <p id="A">
           Far far away, behind the word mountains, far from the countries
           Vokalia and Consonantia, there live the blind texts.
