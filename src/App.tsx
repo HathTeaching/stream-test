@@ -1,16 +1,17 @@
 import './App.css';
-import {Stream, run, newDefaultScheduler, Time} from './stream';
+import {Stream, run, newDefaultScheduler, Time, Disposable} from './stream';
 import {objectUpdateStream, selectionStream, ObjUpdate} from './newstreams';
 import { Component, render } from 'preact';
 
 const scheduler = newDefaultScheduler();
-let [state, updateStream] = objectUpdateStream({
+let [state, updateStream] = objectUpdateStream({ref: {
     inputOne: "",
     inputTwo: ""
-});
+}});
+
 let selectStream = selectionStream();
 
-let disposables = [
+let disposables: Disposable[] = [
     // run({
     //     event(time: Time, value: ObjUpdate) {
     //         console.log(time, "objectUpdate", value);
@@ -19,7 +20,6 @@ let disposables = [
     //         console.error(err);
     //     },
     //     end(time: Time) {}
-
     // } , scheduler, updateStream),
     // run({
     //     event(time: Time, value) {
@@ -34,16 +34,21 @@ let disposables = [
 ];
 
 class App extends Component {
+    mutableState: {ref: {[key: string]: any}};
     constructor() {
         super();
-        this.state = state;
+        this.mutableState = state;
     }
 
-    onInputOne(event) {
-        this.setState({inputOne: event.target.value})
+    onInputOne(event: InputEvent & any) {
+        this.mutableState.ref["inputOne"] = event.target!.value;
     }
-    onInputTwo(event) {
-        this.setState({inputTwo: event.target.value})
+    onInputTwo(event: InputEvent & any) {
+        this.mutableState.ref["inputTwo"] = event.target!.value
+    }
+
+    stopStreams() {
+        disposables.forEach(disp => disp.dispose());
     }
     render() {
     return (
@@ -88,6 +93,7 @@ class App extends Component {
           headline of Alphabet Village and the subline of her own road, the Line
           Lane.
         </p>
+        <input type="button" onClick={() => this.stopStreams()} value="Stop Streams"></input>
       </div>
     );
     }
