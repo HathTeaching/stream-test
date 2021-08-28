@@ -8,6 +8,6 @@ export class RoseTree {
 	}
 }
 
-export function treemap(node: IRoseTree, fn: (x: IRoseTree) => IRoseTree): IRoseTree {
-
+//Write a function that visits every node of a tree, and either modifies them or replaces them using the vistorFn
+export function treemap(tree: IRoseTree, visitorFn: (x: IRoseTree) => IRoseTree): IRoseTree {
 }

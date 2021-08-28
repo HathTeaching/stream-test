@@ -2,7 +2,7 @@
 export type Time = number;
 
 export interface Scheduler {
-  currentTime(): number;
+  currentTime(): Time;
 }
 
 export interface Stream<A> {
@@ -28,7 +28,7 @@ const oneEvent = new Promise((resolve, reject) => {
 	setTimeout(() => resolve("done"), 5000); 
 }).then(data => console.log(data)) 
    
-// the following setups an object which when Run will generate events every 5 seconds.
+// the following setups an object which when Run will generate events every 2 seconds.
 // A stream does not automatically execute like a promise.  
 const intervalStream: Stream<number> = {
 	run(sink: Sink<number>, scheduler: Scheduler): Disposable {
